@@ -1,6 +1,8 @@
 import { IBook } from '@/types/books.type';
 import Image from 'next/image';
 import React from 'react';
+import ReadButton from '@/components/bookDetails/ReadButton';
+import WishListButton from '@/components/bookDetails/WishListButton';
 
 const getBooks = async () => {
   const response = await fetch("http://localhost:3000/booksData.json");
@@ -101,12 +103,8 @@ const BookDetailsPage = async ({ params }: IbookDetailsPageProp) => {
 
           {/* Buttons */}
           <div className="flex items-center gap-4 mt-6">
-            <button className="px-7 py-3 border border-gray-300 rounded-xl font-semibold text-gray-800 hover:bg-gray-100 transition-colors">
-              Read
-            </button>
-            <button className="px-7 py-3 bg-[#50B1C9] hover:bg-[#439cb2] text-white rounded-xl font-semibold transition-colors">
-              Wishlist
-            </button>
+             <ReadButton book={book} />
+              <WishListButton book={book}  />
           </div>
 
         </div>
